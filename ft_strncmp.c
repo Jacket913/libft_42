@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:16:27 by jacket            #+#    #+#             */
-/*   Updated: 2023/11/19 00:53:41 by jacket           ###   ########.fr       */
+/*   Updated: 2023/11/22 13:18:31 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-// #include <stdlib.h>
-// #include <stdio.h>
-// #include <string.h>
+//#include <stdlib.h>
+//#include <stdio.h>
+//#include <string.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -24,10 +24,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (*s1 - *s2);
 }
 
-// int main()
-// {
-// 	char arr1[] = "heello";
-// 	char arr2[] = "hello";
-// 	printf("%d\n", strncmp(arr1, arr2, 2));
-// 	printf("%d\n", ft_strncmp(arr1, arr2, 2));
-// }
+//int main()
+//{
+//	char arr1[] = "heello";
+//	char arr2[] = "hello";
+//	printf("%d\n", strncmp(arr1, arr2, 2));
+//	printf("%d\n", ft_strncmp(arr1, arr2, 2));
+//}

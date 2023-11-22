@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 13:55:46 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 14:27:57 by gmoulin          ###   ########.fr       */
+/*   Created: 2023/11/22 12:35:23 by gmoulin           #+#    #+#             */
+/*   Updated: 2023/11/22 14:51:00 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,35 @@
 //#include <stdio.h>
 //#include <string.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*psrc;
-	unsigned char	*pdest;
+	const char	*ptr;
+	const char	*slittle;
 
-	if (n == 0)
-		return (NULL);
-	if (src < dest)
+	slittle = little;
+	if (strlen(little) == 0)
+		return ((char *)big);
+	while (--len)
 	{
-		psrc = src + n;
-		pdest = dest + n;
-		while (n--)
-			*pdest-- = *psrc--;
+		little = slittle;
+		if (*big == *little)
+			ptr = big;
+		while (*big == *little)
+		{
+			big++ && little++;
+			if (*little == '\0')
+				return ((char *)ptr);
+		}
+		if (*big != *little)
+			big++;
 	}
-	else
-	{
-		psrc = src;
-		pdest = dest;
-		while (n--)
-			*pdest++ = *psrc++;
-	}
-	return (dest);
+	return (NULL);
 }
 
 //int main()
 //{
 //	char arr1[] = "hello how are you";
-//	char arr2[] = "how are you";
-//	//memmove(arr1, arr1[5], 3);
-//	//printf("%s\n", arr1);
-//	ft_memmove(arr2, arr1, 5);
-//	printf("%s\n", arr2);
+//	char arr2[] = "how";
+//	printf("%s\n", strnstr(arr1, arr2, 11)); //This bitch fucking segfaults, how.
+//	printf("%s\n", ft_strnstr(arr1, arr2, 19));
 //}

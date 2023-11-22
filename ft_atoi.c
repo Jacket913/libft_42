@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:11:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 17:13:33 by gmoulin          ###   ########.fr       */
+/*   Created: 2023/11/22 13:56:16 by gmoulin           #+#    #+#             */
+/*   Updated: 2023/11/22 16:41:46 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-// #include <stdio.h>
-// #include <string.h>
 
-size_t	ft_strlen (const char *s)
+int	ft_atoi(const char *nptr)
 {
-	long int	i;
 
-	i = 0;
-	while (s[i])
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
 		i++;
-	if (i == 0)
-		return (NULL);
-	return (i);
+	}
+	return (nb * neg);
 }
 
-// int main(int ac, char **av)
-// {
-// 	printf("%ld\n", strlen(av[1]));
-// 	printf("%ld\n", ft_strlen(av[1]));
-// }
+//int main(int ac, char **av)
+//{
+//	printf("%s\n", atoi(av[1]));
+//	printf("%s\n", ft_atoi(av[2]));
+//}
