@@ -3,28 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:56:16 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 16:41:46 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 09:57:00 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <ctype.h>
 
 int	ft_atoi(const char *nptr)
 {
+	size_t	nb;
+	size_t	neg;
 
-	while (str[i] >= '0' && str[i] <= '9')
+	nb = 0;
+	neg = (*nptr == '-') ? -1 : 1;
+	if (neg == -1 || *nptr == '+')
+		nptr++;
+	while (*nptr)
 	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
+		if (ft_isdigit(*nptr) == 0)
+			return(0);
+		nb = nb * 10 + (*nptr - '0');
+		nptr++;
 	}
 	return (nb * neg);
 }
 
 //int main(int ac, char **av)
 //{
-//	printf("%s\n", atoi(av[1]));
-//	printf("%s\n", ft_atoi(av[2]));
+//	printf("%d\n", atoi(av[1]));
+//	printf("%d\n", ft_atoi(av[1]));
 //}
