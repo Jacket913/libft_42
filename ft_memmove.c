@@ -3,39 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:55:46 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 14:27:57 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:46:37 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*psrc;
-	unsigned char	*pdest;
+	unsigned char	*tmp;
 
-	if (n == 0)
+	if (!dest || !src)
 		return (NULL);
-	if (src < dest)
-	{
-		psrc = src + n;
-		pdest = dest + n;
-		while (n--)
-			*pdest-- = *psrc--;
-	}
-	else
-	{
-		psrc = src;
-		pdest = dest;
-		while (n--)
-			*pdest++ = *psrc++;
-	}
+	tmp = (unsigned char *) malloc(sizeof (unsigned char) * n);
+	if (!tmp)
+		return (NULL);
+	ft_memcpy(tmp, src, n);
+	ft_memcpy(dest, tmp, n);
+	free (tmp);
 	return (dest);
 }
 

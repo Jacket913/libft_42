@@ -3,29 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:10:18 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/21 13:04:04 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:38:36 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*psrc;
-	unsigned char	*pdest;
+	unsigned char	*tmp;
 
-	psrc = src;
-	pdest = dest;
-	if (n == 0)
-		return (NULL);
+	tmp = (unsigned char *) dest;
 	while (n--)
-		*pdest++ = *psrc++;
+		*tmp++ = *((unsigned char *)src++);
 	return (dest);
 }
 

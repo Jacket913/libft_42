@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:16:27 by jacket            #+#    #+#             */
-/*   Updated: 2023/11/22 13:18:31 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:29:34 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>

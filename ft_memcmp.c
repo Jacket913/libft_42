@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:00:44 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/21 13:55:18 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:01:40 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned int	*ps1;
-	unsigned int	*ps2;
-
-	ps1 = s1;
-	ps2 = s2;
-	if (n == 0)
+	if (s1 == NULL && s2 == NULL || n == 0)
 		return (0);
-	while (*ps1 == *ps2 && *ps1 && n--)
-		ps1++ && ps2++;
-	return (*ps1 - *ps2);
+	while (*(unsigned char *)s1 == *(unsigned char *)s2 && n--)
+	{
+		s1++ && s2++;
+		if (n == 0)
+			return(0);
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
 //int main()

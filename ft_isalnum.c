@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:50:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/17 13:16:13 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:28:29 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdio.h>
 //#include <stdlib.h>
 //#include <ctype.h>

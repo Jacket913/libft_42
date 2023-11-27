@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 11:00:47 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 16:41:38 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:31:04 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 // #include <stdlib.h>
 // #include <stdio.h>
 // #include <string.h>
@@ -20,7 +20,7 @@ char	*ft_strchr(const char *s, int c)
 	while (*s != c && s)
 		s++;
 	if (*s == c)
-		return ((char *) &s);
+		return ((char *) s);
 	return (NULL);
 }
 

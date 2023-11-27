@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:35:23 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/22 14:51:00 by gmoulin          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:29:38 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 //#include <stdlib.h>
 //#include <stdio.h>
 //#include <string.h>
@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	const char	*slittle;
 
 	slittle = little;
-	if (strlen(little) == 0)
+	if (ft_strlen(little) == 0)
 		return ((char *)big);
 	while (--len)
 	{
