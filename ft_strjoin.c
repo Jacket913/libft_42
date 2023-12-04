@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 13:00:44 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:36:27 by jacket           ###   ########.fr       */
+/*   Created: 2023/12/03 18:32:45 by jacket            #+#    #+#             */
+/*   Updated: 2023/12/03 22:56:18 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,29 @@
 //#include <stdio.h>
 //#include <string.h>
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if ((s1 == NULL && s2 == NULL) || n == 0)
-		return (0);
-	while (*(unsigned char *)s1 == *(unsigned char *)s2 && n--)
-	{
-		s1++;
-		s2++;
-		if (n == 0)
-			return(0);
-	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	unsigned char	*ptr;
+	size_t			bkptotallen;
+
+	bkptotallen = (ft_strlen(s1) + ft_strlen(s2));
+	if (!s1 || !s2)
+		return (NULL);
+	ptr = (char *) malloc(sizeof(char) * bkptotallen + 1);
+	if (!ptr)
+		return (NULL);
+	while(*s1)
+		*ptr++ = *s1++;
+	while(*s2)
+		*ptr++ = *s2++;
+	*ptr = '\0';
+	ptr -= bkptotallen;
+	return ((char *)ptr);
 }
 
 //int main()
 //{
-//	char arr1[18] = "hello how are you";
-//	char arr2[18] = "hello how are you";
-//	memset(arr1, '*', 6);
-//	ft_memset(arr2, '*', 6);
-//	printf("%s\n", arr1);
-//	printf("%s\n", arr2);
+//	char arr1[] = "hello.how.are.you";
+//	char arr2[] = "fine.thank.you";
+//	printf("%s\n", ft_strjoin(arr1, arr2));
 //}

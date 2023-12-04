@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:16:27 by jacket            #+#    #+#             */
-/*   Updated: 2023/11/26 13:29:34 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:38:09 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (n == 0)
 		return (0);
 	while (*s1 == *s2 && *s1 && --n)
-		s1++ && s2++;
+	{
+		s1++;
+		s2++;
+	}
 	return (*s1 - *s2);
 }
 

@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:50:08 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:27:54 by jacket           ###   ########.fr       */
+/*   Created: 2023/12/03 23:41:33 by jacket            #+#    #+#             */
+/*   Updated: 2023/12/04 01:46:22 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	**ft_split(char const *s, char c)
 {
-	if (c >= 'a' && c <= 'z')
-		c-=32;
-	return (c);
-}
+	int i;
+	int nbc;
+	int flag;
+	char **strings;
 
-/*int main(int ac, char **av)
-{
-	printf("%d", toupper(av[1]));
-	printf("%d", ft_toupper(av[1]));
-}*/
+	i = 0;
+	nbc = 0;
+	while (s[i])
+	{
+		while (s[i])
+		{
+			if (ft_strchr(c, s[i]) == NULL)
+				break;
+			i++;
+		}
+		flag = i;
+		while (s[i])
+		{
+			if (ft_strchr(c, s[i]) == NULL)
+				break;
+			i++;
+		}
+		if (i > flag)
+			nbc++;
+	}
+	strings = malloc(sizeof(char *) * nbc);
+
+}

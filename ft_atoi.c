@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:56:16 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/26 13:10:23 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:34:32 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	ft_atoi(const char *nptr)
 {
 	size_t	nb;
-	size_t	neg;
+	int		neg;
 
 	nb = 0;
 	neg = (*nptr == '-') ? -1 : 1;

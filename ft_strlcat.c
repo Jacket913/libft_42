@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/26 13:29:20 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:37:19 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (size + ft_strlen(src));
 	lenret = (ft_strlen(src) + ft_strlen(dst));
 	while (*dst && size--)
-		*dst++;
+		dst++;
 	while (*src && --size)
 		*dst++ = *src++;
 	*dst = '\0';

@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:50:08 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:27:54 by jacket           ###   ########.fr       */
+/*   Created: 2023/12/03 18:07:32 by jacket            #+#    #+#             */
+/*   Updated: 2023/12/03 22:55:45 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-int	ft_toupper(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (c >= 'a' && c <= 'z')
-		c-=32;
-	return (c);
+	unsigned char	*ptr;
+	size_t			bkplen;
+
+	bkplen = len;
+	if (!s)
+		return (NULL);
+	s += start;
+	ptr = (char *)malloc(sizeof(char) * len);
+	if (!ptr)
+		return (NULL);
+	while (len--)
+		*ptr++ = *s++;
+	ptr -= bkplen;
+	return((char *)ptr);
 }
 
-/*int main(int ac, char **av)
-{
-	printf("%d", toupper(av[1]));
-	printf("%d", ft_toupper(av[1]));
-}*/
+//int main()
+//{
+//	char arr[] = "hello how are you";
+//	printf("%s\n", ft_substr(arr, 3, 5));
+//}

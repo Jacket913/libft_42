@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:42:56 by jacket            #+#    #+#             */
-/*   Updated: 2023/11/26 13:29:42 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:43:51 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		lens;
+	size_t		lens;
 
 	lens = ft_strlen(s);
 	s += lens;
-	while (s-- && *s >= lens)
+	while (s--)
 	{
 		if (*s == c)
 			return ((char *) s);

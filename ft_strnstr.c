@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:35:23 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/26 13:29:38 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/03 19:38:53 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			ptr = big;
 		while (*big == *little)
 		{
-			big++ && little++;
+			big++;
+			little++;
 			if (*little == '\0')
 				return ((char *)ptr);
 		}

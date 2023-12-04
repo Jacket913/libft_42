@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:50:08 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:27:54 by jacket           ###   ########.fr       */
+/*   Created: 2023/12/03 17:50:12 by jacket            #+#    #+#             */
+/*   Updated: 2023/12/03 22:56:35 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	*ft_strdup(const char *s)
 {
-	if (c >= 'a' && c <= 'z')
-		c-=32;
-	return (c);
-}
+	unsigned char	*ptr;
 
-/*int main(int ac, char **av)
-{
-	printf("%d", toupper(av[1]));
-	printf("%d", ft_toupper(av[1]));
-}*/
+	if (!s)
+		return(NULL);
+	ptr = (char *) malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ptr)
+		return (NULL);
+	while (*s)
+		*ptr++ = *s++;
+	*ptr = '\0';
+	return((char *)ptr);
+}
