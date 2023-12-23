@@ -6,16 +6,13 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 23:41:33 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/18 20:47:49 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/23 16:01:17 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
 
-size_t	w_count(const char *s, char sep)
+static size_t	w_count(const char *s, char sep)
 {
 	size_t	count;
 
@@ -32,56 +29,59 @@ size_t	w_count(const char *s, char sep)
 	return (count);
 }
 
-char	*tempcpy(const char *s, char sep)
+char		*allocate_strndup(const char *s, char c)
 {
-	char	*temp;
-	int		j;
-	int		ti;
+	size_t	len;
+	size_t	i;
+	char	*res;
 
-	j = 0;
-	while (s[j] && s[j] != sep)
-		j++;
-	temp = malloc(sizeof(char *) * (j + 1));
-	if (!temp)
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	if (!(res = (char *)malloc(sizeof(char *) * (len + 1))))
 		return (NULL);
-	while (ti < j)
-		temp[ti++] = *s;
-	temp[ti] = 0;
-	return (temp);
+	while (*s && i++ < len)
+		*res++ = *s++;
+	*res = '\0';
+	return (res);
 }
 
-char	**free_all(char ***s, int i)
+static char		**w_cpy(char **res, const char *s, char c)
 {
-	while (--i >= 0)
-		free((*s)[i]);
-	return (NULL);
+	int		i;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			res[i++] = allocate_strndup(s, c);
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	res[i] = NULL;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char		**strings;
-	//char		**ptr;
-	size_t		i;
-	size_t		wcount;
+	char		**str;
+	int			word_count;
 
-	if (!s || !(strings = malloc(sizeof(char *) * (w_count(s, c) + 1))))
+	if (!s)
 		return (NULL);
-	wcount = w_count(s, c);
-	//ptr = *strings;
-	i = 0;
-	while (i < wcount)
+	word_count = w_count(s, c);
+	if (!(str = (char **)malloc(sizeof(char *) * (word_count + 1))))
+		return (NULL);
+	if (w_cpy(str, s, c) == NULL)
 	{
-		*strings = tempcpy(s, c);
-		if (!strings)
-			return (free_all(&strings, i));
-		i++;
+		while (--word_count >= 0)
+			free(str[word_count]);
+		free(str);
+		return (NULL);
 	}
-	return (strings);
+	return (str);
 }
-
-//int main()
-//{
-//	char test[] = "..Hello.how..are...";
-//	char res = ft_split(test, '.');
-//	printf("%d\n", res);
-//}

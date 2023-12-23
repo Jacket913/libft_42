@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 10:57:08 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:30:08 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/18 22:20:06 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,3 @@ int	ft_tolower(int c)
 		c+=32;
 	return (c);
 }
-
-/*int main(int ac, char **av)
-{
-	printf("%d", tolower(av[1]));
-	printf("%d", ft_tolower(av[1]));
-}*/

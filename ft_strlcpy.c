@@ -6,37 +6,24 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:38:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/11/26 13:29:25 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/20 02:04:27 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
-//#include <limits.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	lensrc;
+	size_t	len;
 
-	lensrc = ft_strlen(src);
-	if (size == 0 || lensrc == 0)
-		return (lensrc);
-	while (*src && --size)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (lensrc);
+	len = ft_strlen(src);
+	if (!dst || !src)
+		return (0);
+	if (size > 0)
+	{
+		while (*src && --size)
+			*dst++ = *src++;
+		*dst = '\0';
+	}
+	return (len);
 }
-
-//int main()
-//{
-//	char arr1[] = "hello.how.are.you";
-//	char arr2[17];
-//	char arr3[] = "hello.how.are.you";
-//	char arr4[17];
-//	printf("%d\n", strlcpy(arr2, arr1, -1));
-//	printf("%s\n", arr2);
-//	printf("%d\n", ft_strlcpy(arr4, arr3, -1));
-//	printf("%s\n", arr4);
-//}

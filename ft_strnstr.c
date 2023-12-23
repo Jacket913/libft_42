@@ -6,45 +6,32 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 12:35:23 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:38:53 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/23 13:41:02 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	const char	*ptr;
-	const char	*slittle;
+	size_t	i;
+	size_t	j;
 
-	slittle = little;
-	if (ft_strlen(little) == 0)
+	if (!big && len == 0)
+		return (NULL);
+	if (*little == 0 || little == NULL)
 		return ((char *)big);
-	while (--len)
+	i = 0;
+	while (big[i] && i < len)
 	{
-		little = slittle;
-		if (*big == *little)
-			ptr = big;
-		while (*big == *little)
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len)
 		{
-			big++;
-			little++;
-			if (*little == '\0')
-				return ((char *)ptr);
+			if (little[j + 1] == 0)
+				return ((char *)big + i);
+			j++;
 		}
-		if (*big != *little)
-			big++;
+		i++;
 	}
 	return (NULL);
 }
-
-//int main()
-//{
-//	char arr1[] = "hello how are you";
-//	char arr2[] = "how";
-//	printf("%s\n", strnstr(arr1, arr2, 11)); //This bitch fucking segfaults, how.
-//	printf("%s\n", ft_strnstr(arr1, arr2, 19));
-//}

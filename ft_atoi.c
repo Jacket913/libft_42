@@ -6,14 +6,11 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:56:16 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:34:32 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/20 02:41:36 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <ctype.h>
 
 int	ft_atoi(const char *nptr)
 {
@@ -21,21 +18,19 @@ int	ft_atoi(const char *nptr)
 	int		neg;
 
 	nb = 0;
-	neg = (*nptr == '-') ? -1 : 1;
+	neg = 1;
+	while (*nptr == ' ' || *nptr == '\t'
+			|| *nptr == '\n' || *nptr == '\v'
+			|| *nptr == '\f' || *nptr == '\r')
+		nptr++;
+	if (*nptr == '-')
+		neg = -1;
 	if (neg == -1 || *nptr == '+')
 		nptr++;
-	while (*nptr)
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (ft_isdigit(*nptr) == 0)
-			return(0);
 		nb = nb * 10 + (*nptr - '0');
 		nptr++;
 	}
 	return (nb * neg);
 }
-
-//int main(int ac, char **av)
-//{
-//	printf("%d\n", atoi(av[1]));
-//	printf("%d\n", ft_atoi(av[1]));
-//}

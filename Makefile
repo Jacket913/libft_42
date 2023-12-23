@@ -1,12 +1,9 @@
 NAME = libft.a
-
-SOURCES = *.c
-
+CC = cc
+SRC = *.c
 INCLUDE = -I ./libft
-
-OBJ = ${SOURCES:.c=.o}
-
-FLAGS = -Werror -Wextra -Wall
+OBJ = $(SRC:.c=.o)
+CFLAGS = -Werror -Wextra -Wall
 
 #COLORS
 C_GOOD    =    "\033[32mSUCCESS"
@@ -15,18 +12,18 @@ C_RED    =    "\033[31mDelete   "
 C_WHIT    =     "\033[0m [ $(NAME) ]"
 C_BLUE    =    "\033[34;1mCompiling"
 
-${NAME} : libft.h
-	@cc ${FLAGS} -C ${SOURCES} ${INCLUDE}
-	@ar rc ${NAME} ${OBJ}
-	@ranlib ${NAME}
+$(NAME) : libft.h
+	@$(CC) $(CFLAGS) -c $(SRC) $(INCLUDE)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 	@echo $(C_BLUE) $(C_WHIT) $(C_GOOD)
 
-all : ${NAME}
+all : $(NAME)
 
 clean :
-	@rm -f ${OBJ}
+	@rm -f $(OBJ)
 
 fclean :
-	@rm -rf ${NAME}
+	@rm -rf $(NAME)
 
 re : fclean all

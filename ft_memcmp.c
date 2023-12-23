@@ -6,14 +6,11 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 13:00:44 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/03 19:36:27 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/18 22:22:41 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -28,13 +25,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
-
-//int main()
-//{
-//	char arr1[18] = "hello how are you";
-//	char arr2[18] = "hello how are you";
-//	memset(arr1, '*', 6);
-//	ft_memset(arr2, '*', 6);
-//	printf("%s\n", arr1);
-//	printf("%s\n", arr2);
-//}
