@@ -6,7 +6,7 @@
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 23:41:33 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/23 16:01:17 by jacket           ###   ########.fr       */
+/*   Updated: 2023/12/23 20:49:04 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,48 @@ static size_t	w_count(const char *s, char sep)
 	return (count);
 }
 
-char		*allocate_strndup(const char *s, char c)
+static size_t	w_len(const char *s, char sep)
 {
 	size_t	len;
-	size_t	i;
-	char	*res;
 
 	len = 0;
-	while (s[len] && s[len] != c)
+	while (s[len] && s[len] != sep)
 		len++;
-	if (!(res = (char *)malloc(sizeof(char *) * (len + 1))))
-		return (NULL);
-	while (*s && i++ < len)
-		*res++ = *s++;
-	*res = '\0';
-	return (res);
+	return (len);
 }
 
-static char		**w_cpy(char **res, const char *s, char c)
+static void	free_arr(char **arr, size_t i)
 {
-	int		i;
+	while (i > 0)
+	{
+		i--;
+		free(arr[i]);
+	}
+	free(arr);
+}
+
+static char	**spl_machine(const char *s, char c, char **arr, size_t w_count)
+{
+	size_t i;
+	size_t j;
 
 	i = 0;
-	while (*s)
+	j = 0;
+	while (i < w_count)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		while (s[j] && s[j] == c)
+			j++;
+		if (!(arr[i] = ft_substr(s, j, w_len(&s[j], c))))
 		{
-			res[i++] = allocate_strndup(s, c);
-			while (*s && *s != c)
-				s++;
+			free_arr(arr, i);
+			return (NULL);
 		}
+		while (s[j] && s[j] != c)
+			j++;
+		i++;
 	}
-	res[i] = NULL;
-	return (res);
+	arr[i] = NULL;
+	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -76,12 +83,6 @@ char	**ft_split(char const *s, char c)
 	word_count = w_count(s, c);
 	if (!(str = (char **)malloc(sizeof(char *) * (word_count + 1))))
 		return (NULL);
-	if (w_cpy(str, s, c) == NULL)
-	{
-		while (--word_count >= 0)
-			free(str[word_count]);
-		free(str);
-		return (NULL);
-	}
+	str = spl_machine(s, c, str, word_count);
 	return (str);
 }
