@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/02 21:26:30 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/02 17:32:38 by jacket            #+#    #+#             */
+/*   Updated: 2024/01/02 20:37:40 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	srclen;
-	size_t	dstlen;
+	int	i;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	if (dstlen >= size)
-		dstlen = size;
-	if (dstlen == size)
-		return (dstlen + srclen);
-	if (dstlen + srclen < size)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
+	i = 0;
+	while (lst)
 	{
-		ft_memcpy(dst + dstlen, src, size - dstlen - 1);
-		dst[size - 1] = 0;
+		lst = lst->next;
+		i++;
 	}
-	return (dstlen + srclen);
+	return (i);
 }

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/02 21:26:30 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/02 19:36:03 by jacket            #+#    #+#             */
+/*   Updated: 2024/01/02 21:07:38 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	srclen;
-	size_t	dstlen;
+	t_list	*change;
+	t_list	*newlist;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	if (dstlen >= size)
-		dstlen = size;
-	if (dstlen == size)
-		return (dstlen + srclen);
-	if (dstlen + srclen < size)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
+	if (!lst || !f || !del)
+		return (NULL);
+	newlist = NULL;
+	while (lst)
 	{
-		ft_memcpy(dst + dstlen, src, size - dstlen - 1);
-		dst[size - 1] = 0;
+		if (!(change = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&newlist, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&newlist, change);
+		lst = lst->next;
 	}
-	return (dstlen + srclen);
+	return (newlist);
 }

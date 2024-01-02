@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/02 21:26:30 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/02 17:11:44 by jacket            #+#    #+#             */
+/*   Updated: 2024/01/02 17:18:05 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	srclen;
-	size_t	dstlen;
+	t_list	*node;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	if (dstlen >= size)
-		dstlen = size;
-	if (dstlen == size)
-		return (dstlen + srclen);
-	if (dstlen + srclen < size)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
-	{
-		ft_memcpy(dst + dstlen, src, size - dstlen - 1);
-		dst[size - 1] = 0;
-	}
-	return (dstlen + srclen);
+	if (!(node = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

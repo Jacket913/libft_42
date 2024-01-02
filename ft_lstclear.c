@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/02 21:26:30 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/02 19:24:51 by jacket            #+#    #+#             */
+/*   Updated: 2024/01/02 21:07:37 by jacket           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	srclen;
-	size_t	dstlen;
+	t_list	*tmp;
 
-	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	if (dstlen >= size)
-		dstlen = size;
-	if (dstlen == size)
-		return (dstlen + srclen);
-	if (dstlen + srclen < size)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
+	if (!lst || !del || !*lst)
+		return ;
+	while (*lst)
 	{
-		ft_memcpy(dst + dstlen, src, size - dstlen - 1);
-		dst[size - 1] = 0;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	return (dstlen + srclen);
+	*lst = NULL;
 }
