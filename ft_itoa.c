@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 23:56:28 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/23 15:33:16 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/04 22:43:36 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/01/04 22:43:40 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rec_itoa(long nbr, char **buffer)
 	*(*buffer)++ = (nbr % 10) + '0';
 }
 
-static size_t		tomalloc(long nbr, int neg)
+static size_t	tomalloc(long nbr, int neg)
 {
 	size_t	size;
 
@@ -47,7 +47,8 @@ char	*ft_itoa(int n)
 		neg++;
 	if (neg == 1)
 		nbr *= -1;
-	if (!(res = (char *)malloc(sizeof(char) * (tomalloc(nbr, neg)))))
+	res = (char *)malloc(sizeof(char) * (tomalloc(nbr, neg)));
+	if (!res)
 		return (NULL);
 	ptr = res;
 	if (neg == 1)

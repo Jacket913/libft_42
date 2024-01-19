@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 19:36:03 by jacket            #+#    #+#             */
-/*   Updated: 2024/01/02 21:07:38 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/04 23:05:05 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/01/04 23:05:08 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	newlist = NULL;
 	while (lst)
 	{
-		if (!(change = ft_lstnew(f(lst->content))))
+		change = ft_lstnew(f(lst->content));
+		if (!change)
 		{
 			ft_lstclear(&newlist, del);
 			return (NULL);

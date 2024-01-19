@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 23:41:33 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/23 20:49:04 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/04 23:06:55 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/01/04 23:06:57 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	free_arr(char **arr, size_t i)
 
 static char	**spl_machine(const char *s, char c, char **arr, size_t w_count)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -60,7 +60,8 @@ static char	**spl_machine(const char *s, char c, char **arr, size_t w_count)
 	{
 		while (s[j] && s[j] == c)
 			j++;
-		if (!(arr[i] = ft_substr(s, j, w_len(&s[j], c))))
+		arr[i] = ft_substr(s, j, w_len(&s[j], c));
+		if (!arr)
 		{
 			free_arr(arr, i);
 			return (NULL);
@@ -81,7 +82,8 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = w_count(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (word_count + 1))))
+	str = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!str)
 		return (NULL);
 	str = spl_machine(s, c, str, word_count);
 	return (str);

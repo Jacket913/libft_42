@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 20:51:22 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/23 15:51:15 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/04 23:08:02 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/01/04 23:08:03 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s)
 		return (NULL);
-	if (!(res = ft_strdup(s)))
+	res = ft_strdup(s);
+	if (!res)
 		return (NULL);
 	i = 0;
 	while (res[i])

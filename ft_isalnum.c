@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 09:50:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/18 22:23:40 by jacket           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:55:52 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum (int i)
+int	ft_isalnum(int i)
 {
-	return ft_isalpha(i) || ft_isdigit(i);
+	return (ft_isalpha(i) || ft_isdigit(i));
 }

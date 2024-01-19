@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:22:43 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/02 21:26:30 by jacket           ###   ########.fr       */
+/*   Updated: 2024/01/04 23:07:46 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	srclen;
 	size_t	dstlen;
 
+	if ((!dst || !src) && size == 0)
+		return (0);
 	srclen = ft_strlen(src);
 	dstlen = ft_strlen(dst);
 	if (dstlen >= size)

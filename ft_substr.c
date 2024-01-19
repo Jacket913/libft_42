@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 18:07:32 by jacket            #+#    #+#             */
-/*   Updated: 2023/12/23 16:26:10 by jacket           ###   ########.fr       */
+/*   Created: 2024/01/04 15:22:29 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/01/04 18:53:28 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,24 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	bkplen = len;
 	if (start >= ft_strlen(s))
 	{
-		if (!(ptr = (char *)malloc(sizeof(char))))
+		ptr = (char *)malloc(sizeof(char));
+		if (!ptr)
 			return (NULL);
 		*ptr = '\0';
 		return (ptr);
 	}
 	s += start;
-	if (!(ptr = (char *)malloc(sizeof(char) * len + 1)))
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	bkplen = len;
+	ptr = (char *)malloc(sizeof(char) * len + 1);
+	if (!ptr)
 		return (NULL);
 	while (len--)
 		*ptr++ = *s++;
 	*ptr = '\0';
 	ptr -= bkplen;
-	return(ptr);
+	return (ptr);
 }

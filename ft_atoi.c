@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jacket <jacket@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 13:56:16 by gmoulin           #+#    #+#             */
-/*   Updated: 2023/12/20 02:41:36 by jacket           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:52:03 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_atoi(const char *nptr)
 	nb = 0;
 	neg = 1;
 	while (*nptr == ' ' || *nptr == '\t'
-			|| *nptr == '\n' || *nptr == '\v'
-			|| *nptr == '\f' || *nptr == '\r')
+		|| *nptr == '\n' || *nptr == '\v'
+		|| *nptr == '\f' || *nptr == '\r')
 		nptr++;
 	if (*nptr == '-')
 		neg = -1;
